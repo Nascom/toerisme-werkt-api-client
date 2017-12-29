@@ -6,6 +6,9 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
 use Nascom\ToerismeWerktApiClient\Request\Auth\GetTokenRequest;
 use Nascom\ToerismeWerktApiClient\Request\RequestInterface;
+use Nascom\ToerismeWerktApiClient\Response\TokenResponse;
+use Nascom\ToerismeWerktApiClient\ResponseHandler\ResponseHandler;
+use Nascom\ToerismeWerktApiClient\ResponseHandler\ResponseHandlerInterface;
 
 /**
  * Class ApiClient
@@ -30,6 +33,11 @@ class ApiClient implements ApiClientInterface
     protected $apiKey;
 
     /**
+     * @var ResponseHandler
+     */
+    protected $responseHandler;
+
+    /**
      * @var array
      */
     protected $options = [
@@ -47,19 +55,22 @@ class ApiClient implements ApiClientInterface
      * @param string $apiBaseUri
      * @param string $apiKey
      * @param array $options
+     * @param ResponseHandlerInterface $responseHandler
      */
     public function __construct
     (
         ClientInterface $httpClient,
         string $apiBaseUri,
         string $apiKey,
-        array $options = []
+        array $options = [],
+        ResponseHandlerInterface $responseHandler = null
     )
     {
         $this->httpClient = $httpClient;
         $this->apiBaseUri = $apiBaseUri;
         $this->apiKey = $apiKey;
         $this->options = array_merge_recursive($this->options, $options);
+        $this->responseHandler = $responseHandler ?: new ResponseHandler();
     }
 
     /**
@@ -73,9 +84,9 @@ class ApiClient implements ApiClientInterface
 
         try {
             $response = $this->httpClient->request(
-              $request->getMethod(),
-              $this->buildUrlFromRequest($request),
-              $this->buildOptionsFromRequest($request)
+                $request->getMethod(),
+                $this->buildUrlFromRequest($request),
+                $this->buildOptionsFromRequest($request)
             );
         }
         catch (RequestException $e) {
@@ -84,15 +95,17 @@ class ApiClient implements ApiClientInterface
             if ($e->getResponse()->getStatusCode() == 401) {
                 // @todo: limit this to prevent blowing the stack.
                 $this->requestJwtToken();
-                $this->handle($request);
+                return $this->handle($request);
             }
             else {
                 throw $e;
             }
         }
 
-        // @todo: map.
-        return $response->getBody()->getContents();
+        return $this->responseHandler->parseResponse(
+            $response->getBody()->getContents(),
+            $request->getResponseClass()
+        );
     }
 
     /**
@@ -131,7 +144,9 @@ class ApiClient implements ApiClientInterface
     protected function requestJwtToken(): void
     {
         $authenticationRequest = new GetTokenRequest($this->apiKey);
-        $token = $this->handle($authenticationRequest);
+        /** @var TokenResponse $tokenResponse */
+        $tokenResponse = $this->handle($authenticationRequest);
+        $token = $tokenResponse->getToken();
 
         $this->options['Authorization'] = 'Bearer ' . $token;
     }

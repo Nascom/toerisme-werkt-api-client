@@ -3,6 +3,7 @@
 namespace Nascom\ToerismeWerktApiClient\Request\Auth;
 
 use Nascom\ToerismeWerktApiClient\Request\PutRequest;
+use Nascom\ToerismeWerktApiClient\Response\TokenResponse;
 
 /**
  * Class GetTokenRequest
@@ -18,7 +19,7 @@ class GetTokenRequest extends PutRequest
      */
     public function __construct(string $apiKey)
     {
-        $this->options['API_KEY'] = $apiKey;
+        $this->parameters['API_KEY'] = $apiKey;
     }
 
     /**
@@ -35,5 +36,13 @@ class GetTokenRequest extends PutRequest
     public function needsAuth(): bool
     {
         return false;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getResponseClass(): string
+    {
+        return TokenResponse::class;
     }
 }

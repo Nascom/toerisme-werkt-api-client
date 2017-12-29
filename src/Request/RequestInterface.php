@@ -33,4 +33,9 @@ interface RequestInterface
      * @return bool
      */
     public function needsAuth(): bool;
+
+    /**
+     * @return string
+     */
+    public function getResponseClass(): string;
 }

@@ -2,6 +2,8 @@
 
 namespace Nascom\ToerismeWerktApiClient\Request;
 
+use Nascom\ToerismeWerktApiClient\Response\Response;
+
 /**
  * Class AbstractRequest
  *
@@ -41,5 +43,13 @@ abstract class AbstractRequest implements RequestInterface
     public function needsAuth(): bool
     {
         return true;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getResponseClass(): string
+    {
+        return Response::class;
     }
 }
