@@ -3,6 +3,7 @@
 namespace Nascom\ToerismeWerktApiClient\Request\TouristicProducts;
 
 use Nascom\ToerismeWerktApiClient\Request\GetRequest;
+use Nascom\ToerismeWerktApiClient\Response\ListResponse;
 
 /**
  * Class ListTouristicProductsRequest
@@ -27,5 +28,13 @@ class ListTouristicProductsRequest extends GetRequest
     public function getEndpoint(): string
     {
         return 'touristicproducts';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getResponseClass(): string
+    {
+        return ListResponse::class;
     }
 }

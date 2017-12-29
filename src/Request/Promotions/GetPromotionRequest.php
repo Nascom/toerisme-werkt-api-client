@@ -3,6 +3,7 @@
 namespace Nascom\ToerismeWerktApiClient\Request\Promotions;
 
 use Nascom\ToerismeWerktApiClient\Request\GetRequest;
+use Nascom\ToerismeWerktApiClient\Response\ResourceResponse;
 
 /**
  * Class GetPromotionRequest
@@ -32,5 +33,13 @@ class GetPromotionRequest extends GetRequest
     public function getEndpoint(): string
     {
         return "promotions/{$this->promotionId}";
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getResponseClass(): string
+    {
+        return ResourceResponse::class;
     }
 }
