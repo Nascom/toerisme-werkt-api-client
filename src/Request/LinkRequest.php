@@ -42,7 +42,12 @@ class LinkRequest extends GetRequest
      */
     public function getEndpoint(): string
     {
-        return parse_url($this->link, PHP_URL_PATH) ?: '';
+        $path = parse_url($this->link, PHP_URL_PATH);
+        if (empty($path)) {
+            return '';
+        }
+
+        return substr($path, 1);
     }
 
     /**
