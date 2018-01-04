@@ -4,6 +4,7 @@ namespace Nascom\ToerismeWerktApiClient\Http;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use Nascom\ToerismeWerktApiClient\Exception\AuthenticationFailedException;
 use Nascom\ToerismeWerktApiClient\Request\Auth\GetTokenRequest;
 use Nascom\ToerismeWerktApiClient\Request\RequestInterface;
 use Nascom\ToerismeWerktApiClient\Response\TokenResponse;
@@ -146,8 +147,14 @@ class ApiClient implements ApiClientInterface
         $authenticationRequest = new GetTokenRequest($this->apiKey);
         /** @var TokenResponse $tokenResponse */
         $tokenResponse = $this->handle($authenticationRequest);
-        $token = $tokenResponse->getToken();
+        if ($tokenResponse->isErrorResponse()) {
+            throw new AuthenticationFailedException(sprintf(
+                'Authentication failed. Error: %s',
+                $tokenResponse->getFirstError()->getDescription()
+            ));
+        }
 
+        $token = $tokenResponse->getToken();
         $this->options['Authorization'] = 'Bearer ' . $token;
     }
 

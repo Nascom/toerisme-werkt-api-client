@@ -49,4 +49,12 @@ class ErrorResponse extends Response
     {
         return $this->errors;
     }
+
+    /**
+     * @return Error
+     */
+    public function getFirstError(): Error
+    {
+        return $this->errors[0];
+    }
 }
