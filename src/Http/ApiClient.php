@@ -10,6 +10,7 @@ use Nascom\ToerismeWerktApiClient\Request\RequestInterface;
 use Nascom\ToerismeWerktApiClient\Response\TokenResponse;
 use Nascom\ToerismeWerktApiClient\ResponseHandler\ResponseHandler;
 use Nascom\ToerismeWerktApiClient\ResponseHandler\ResponseHandlerInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class ApiClient
@@ -84,28 +85,45 @@ class ApiClient implements ApiClientInterface
         }
 
         try {
-            $response = $this->httpClient->request(
-                $request->getMethod(),
-                $this->buildUrlFromRequest($request),
-                $this->buildOptionsFromRequest($request)
-            );
+            $response = $this->doRequest($request);
         }
         catch (RequestException $e) {
             // When the token is expired, a 401 status code will be emitted.
             // We'll renew the token and try again.
-            if ($e->getResponse()->getStatusCode() == 401) {
-                // @todo: limit this to prevent blowing the stack.
+            if ($this->isTokenExpired($e)) {
                 $this->requestJwtToken();
                 return $this->handle($request);
             }
-            else {
-                throw $e;
-            }
+
+            throw $e;
         }
 
         return $this->responseHandler->parseResponse(
             $response->getBody()->getContents(),
             $request->getResponseClass()
+        );
+    }
+
+    /**
+     * @param RequestException $e
+     * @return bool
+     */
+    protected function isTokenExpired(RequestException $e): bool
+    {
+        // @todo: actually perform this check.
+        return $e->getResponse()->getStatusCode() == 401 && false;
+    }
+
+    /**
+     * @param RequestInterface $request
+     * @return ResponseInterface
+     */
+    protected function doRequest(RequestInterface $request): ResponseInterface
+    {
+        return $this->httpClient->request(
+          $request->getMethod(),
+          $this->buildUrlFromRequest($request),
+          $this->buildOptionsFromRequest($request)
         );
     }
 
