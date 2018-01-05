@@ -133,7 +133,14 @@ class ApiClient implements ApiClientInterface
      */
     protected function buildUrlFromRequest(RequestInterface $request): string
     {
-        return $this->apiBaseUri . '/' . $request->getEndpoint();
+        // For some reason, the authentication endpoint is the only one without
+        // an API version prefix.
+        $url = $this->apiBaseUri;
+        if (!$request instanceof GetTokenRequest) {
+            $url .= '/api/v2';
+        }
+
+        return $url . '/' . $request->getEndpoint();
     }
 
     /**
