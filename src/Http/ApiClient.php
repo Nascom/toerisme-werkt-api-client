@@ -173,7 +173,7 @@ class ApiClient implements ApiClientInterface
         }
 
         $token = $tokenResponse->getToken();
-        $this->options['Authorization'] = 'Bearer ' . $token;
+        $this->options['headers']['Authorization'] = 'Bearer ' . $token;
     }
 
     /**
@@ -181,6 +181,6 @@ class ApiClient implements ApiClientInterface
      */
     private function hasToken(): bool
     {
-        return !empty($this->options['Authorization']);
+        return !empty($this->options['headers']['Authorization']);
     }
 }
