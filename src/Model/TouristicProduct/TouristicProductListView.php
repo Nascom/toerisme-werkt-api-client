@@ -39,4 +39,28 @@ class TouristicProductListView
 
         return $listView;
     }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return Attributes
+     */
+    public function getAttributes(): Attributes
+    {
+        return $this->attributes;
+    }
 }
