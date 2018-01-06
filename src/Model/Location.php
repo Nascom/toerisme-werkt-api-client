@@ -26,8 +26,8 @@ class Location
     public static function fromArray(array $data): self
     {
         $location = new static;
-        $location->latitude = (float) $data['latitude'];
-        $location->longitude = (float) $data['longitude'];
+        $location->latitude = (float) ($data['latitude'] ?? 0.0);
+        $location->longitude = (float) ($data['longitude'] ?? 0.0);
 
         return $location;
     }

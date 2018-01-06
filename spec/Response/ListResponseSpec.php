@@ -5,7 +5,7 @@ namespace spec\Nascom\ToerismeWerktApiClient\Response;
 use Nascom\ToerismeWerktApiClient\Response\ListResponse;
 use Nascom\ToerismeWerktApiClient\Response\ResponseInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct\SampleTouristicProductListResponse;
 
 class ListResponseSpec extends ObjectBehavior
 {
@@ -73,57 +73,19 @@ class ListResponseSpec extends ObjectBehavior
     function it_can_extract_the_data_list()
     {
         $this->getList()->shouldBeArray();
-        $this->getList()->shouldHaveCount(1);
+        $this->getList()->shouldHaveCount(2);
     }
 
     private function getExampleListResponse(): string
     {
-        return <<<JSON
-{
-    "links": {
-        "self": "http://foo.bar/api/v2/touristicproducts/",
-        "next": "http://foo.bar/api/v2/touristicproducts/?page[offset]=4",
-        "last": "http://foo.bar/api/v2/touristicproducts/?page[offset]=8",
-        "prev": "http://foo.bar/api/v2/touristicproducts/?page[offset]=2",
-        "first": "http://foo.bar/api/v2/touristicproducts/?page[offset]=1"
-    },
-    "data": [{
-        "type": "touristicproduct",
-        "id": "TouristicProduct-000000-0000-00-000-00000",
-        "attributes": {
-            "touristicProductType": "hotel",
-            "title": "Heidezicht",
-            "description": "Een hotel met zicht op de heide",
-            "address": {
-                "street": "teststraat",
-                "houseNumber": "1",
-                "postalCode": "9000",
-                "municipality": "Gent"
-            },
-            "location": {
-                "longitude": 0.0,
-                "latitude": 0.0
-            },
-            "image": "​ http://foo.bar/image.jpg​ ",
-            "lastModified": "2016-07-26T23:59:59Z"
-        },
-        "links": {
-            "self": "http://foo.bar/api/v2/touristicproducts/TouristicProduct-000000-0000-00-000-00000"
-        }
-    }]
-}
-JSON;
+        return SampleTouristicProductListResponse::asJson();
     }
 
     private function getPagelessExampleListResponse(): string
     {
-        return <<<JSON
-{
-    "links": {
-        "self": "http://foo.bar/api/v2/touristicproducts/"
-    },
-    "data": []
-}
-JSON;
+        $sampleResponse = SampleTouristicProductListResponse::asArray();
+        $sampleResponse['links'] = ['self' => $sampleResponse['links']['self']];
+
+        return json_encode($sampleResponse);
     }
 }

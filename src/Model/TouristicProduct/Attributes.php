@@ -1,6 +1,7 @@
 <?php
 
 namespace Nascom\ToerismeWerktApiClient\Model\TouristicProduct;
+
 use Nascom\ToerismeWerktApiClient\Model\Address;
 use Nascom\ToerismeWerktApiClient\Model\ArrayInstantiatable;
 use Nascom\ToerismeWerktApiClient\Model\Location;
@@ -30,12 +31,12 @@ class Attributes
     private $description;
 
     /**
-     * @var Address|null
+     * @var Address
      */
     private $address;
 
     /**
-     * @var Location|null
+     * @var Location
      */
     private $location;
 
@@ -91,17 +92,17 @@ class Attributes
     }
 
     /**
-     * @return Address|null
+     * @return Address
      */
-    public function getAddress(): ?Address
+    public function getAddress(): Address
     {
         return $this->address;
     }
 
     /**
-     * @return Location|null
+     * @return Location
      */
-    public function getLocation(): ?Location
+    public function getLocation(): Location
     {
         return $this->location;
     }

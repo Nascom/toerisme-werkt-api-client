@@ -14,7 +14,9 @@
         }
     },
     "autoload-dev": {
-        "psr-4": { "spec\\Nascom\\ToerismeWerktApiClient\\": "spec/" }
+        "psr-4": {
+            "spec\\Nascom\\ToerismeWerktApiClient\\": "spec/"
+        }
     },
     "config": {
         "bin-dir": "bin"
