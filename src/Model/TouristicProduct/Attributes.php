@@ -2,9 +2,9 @@
 
 namespace Nascom\ToerismeWerktApiClient\Model\TouristicProduct;
 
-use Nascom\ToerismeWerktApiClient\Model\Address;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Address;
 use Nascom\ToerismeWerktApiClient\Model\ArrayInstantiatable;
-use Nascom\ToerismeWerktApiClient\Model\Location;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Location;
 
 /**
  * Class Attributes
@@ -49,6 +49,8 @@ class Attributes
      * @var \DateTime
      */
     private $lastModified;
+
+    private $prices;
 
     /**
      * @param array $data

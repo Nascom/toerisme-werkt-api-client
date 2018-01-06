@@ -3,13 +3,13 @@
 namespace spec\Nascom\ToerismeWerktApiClient\Model\TouristicProduct;
 
 use Nascom\ToerismeWerktApiClient\Model\TouristicProduct\Attributes;
-use Nascom\ToerismeWerktApiClient\Model\TouristicProduct\TouristicProductListView;
+use Nascom\ToerismeWerktApiClient\Model\TouristicProduct\TouristicProduct;
 use PhpSpec\ObjectBehavior;
 use spec\Nascom\ToerismeWerktApiClient\BeConstructedFromArray;
 use spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct\SampleAttributes;
 use spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct\SampleTouristicProductListView;
 
-class TouristicProductListViewSpec extends ObjectBehavior
+class TouristicProductSpec extends ObjectBehavior
 {
     use BeConstructedFromArray;
 
@@ -21,12 +21,12 @@ class TouristicProductListViewSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->beConstructedWith();
-        $this->shouldHaveType(TouristicProductListView::class);
+        $this->shouldHaveType(TouristicProduct::class);
     }
 
     function it_can_be_instantiated_from_an_array()
     {
-        $this->shouldHaveType(TouristicProductListView::class);
+        $this->shouldHaveType(TouristicProduct::class);
     }
 
     function it_can_extract_the_type()

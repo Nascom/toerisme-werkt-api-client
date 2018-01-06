@@ -4,11 +4,11 @@ namespace Nascom\ToerismeWerktApiClient\Model\TouristicProduct;
 use Nascom\ToerismeWerktApiClient\Model\ArrayInstantiatable;
 
 /**
- * Class TouristicProductListView
+ * Class TouristicProduct
  *
  * @package Nascom\ToerismeWerktApiClient\Model\TouristicProduct
  */
-class TouristicProductListView
+class TouristicProduct
 {
     use ArrayInstantiatable;
 
@@ -29,7 +29,7 @@ class TouristicProductListView
 
     /**
      * @param array $data
-     * @return TouristicProductListView
+     * @return TouristicProduct
      */
     public static function fromArray(array $data): self
     {

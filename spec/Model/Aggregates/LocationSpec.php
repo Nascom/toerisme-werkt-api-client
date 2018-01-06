@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\Nascom\ToerismeWerktApiClient\Model;
+namespace spec\Nascom\ToerismeWerktApiClient\Model\Aggregates;
 
-use Nascom\ToerismeWerktApiClient\Model\Location;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Location;
 use PhpSpec\ObjectBehavior;
 use spec\Nascom\ToerismeWerktApiClient\BeConstructedFromArray;
-use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleLocation;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SampleLocation;
 
 class LocationSpec extends ObjectBehavior
 {

@@ -2,9 +2,9 @@
 
 namespace spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct;
 
-use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleAddress;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SampleAddress;
 use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleData;
-use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleLocation;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SampleLocation;
 
 /**
  * Class SampleAttributes

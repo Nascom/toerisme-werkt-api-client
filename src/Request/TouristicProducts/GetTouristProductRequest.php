@@ -3,7 +3,7 @@
 namespace Nascom\ToerismeWerktApiClient\Request\TouristicProducts;
 
 use Nascom\ToerismeWerktApiClient\Request\GetRequest;
-use Nascom\ToerismeWerktApiClient\Response\ResourceResponse;
+use Nascom\ToerismeWerktApiClient\Response\TouristicProducts\TouristicProductResponse;
 
 /**
  * Class GetTouristProductRequest
@@ -40,6 +40,6 @@ class GetTouristProductRequest extends GetRequest
      */
     public function getResponseClass(): string
     {
-        return ResourceResponse::class;
+        return TouristicProductResponse::class;
     }
 }

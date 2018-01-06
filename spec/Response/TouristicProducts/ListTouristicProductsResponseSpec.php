@@ -2,7 +2,7 @@
 
 namespace spec\Nascom\ToerismeWerktApiClient\Response\TouristicProducts;
 
-use Nascom\ToerismeWerktApiClient\Model\TouristicProduct\TouristicProductListView;
+use Nascom\ToerismeWerktApiClient\Model\TouristicProduct\TouristicProduct;
 use Nascom\ToerismeWerktApiClient\Response\ListResponse;
 use Nascom\ToerismeWerktApiClient\Response\ResponseInterface;
 use Nascom\ToerismeWerktApiClient\Response\TouristicProducts\ListTouristicProductsResponse;
@@ -35,6 +35,6 @@ class ListTouristicProductsResponseSpec extends ObjectBehavior
 
     function it_should_parse_the_list_data_to_products()
     {
-        $this->getList()[0]->shouldHaveType(TouristicProductListView::class);
+        $this->getList()[0]->shouldHaveType(TouristicProduct::class);
     }
 }

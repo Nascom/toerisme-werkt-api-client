@@ -1,11 +1,13 @@
 <?php
 
-namespace Nascom\ToerismeWerktApiClient\Model;
+namespace Nascom\ToerismeWerktApiClient\Model\Aggregates;
+
+use Nascom\ToerismeWerktApiClient\Model\ArrayInstantiatable;
 
 /**
  * Class Address
  *
- * @package Nascom\ToerismeWerktApiClient\Model
+ * @package Nascom\ToerismeWerktApiClient\Model\Aggregates
  */
 class Address
 {
@@ -30,6 +32,11 @@ class Address
      * @var string|null
      */
     private $municipality;
+
+    /**
+     * @var string|null
+     */
+    private $bus;
 
     /**
      * @param array $data
@@ -73,5 +80,13 @@ class Address
     public function getMunicipality(): ?string
     {
         return $this->municipality;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getBus(): ?string
+    {
+        return $this->bus;
     }
 }

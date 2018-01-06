@@ -1,11 +1,11 @@
 <?php
 
-namespace Nascom\ToerismeWerktApiClient\Model;
+namespace Nascom\ToerismeWerktApiClient\Model\Aggregates;
 
 /**
  * Class Location
  *
- * @package Nascom\ToerismeWerktApiClient\Model
+ * @package Nascom\ToerismeWerktApiClient\Model\Aggregates
  */
 class Location
 {

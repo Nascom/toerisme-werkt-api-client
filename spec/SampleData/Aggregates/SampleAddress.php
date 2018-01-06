@@ -1,11 +1,13 @@
 <?php
 
-namespace spec\Nascom\ToerismeWerktApiClient\SampleData;
+namespace spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates;
+
+use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleData;
 
 /**
  * Class SampleAddress
  *
- * @package spec\Nascom\ToerismeWerktApiClient\SampleData
+ * @package spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates
  */
 class SampleAddress extends SampleData
 {
@@ -18,7 +20,8 @@ class SampleAddress extends SampleData
             'street' => 'Some street',
             'houseNumber' => '34',
             'postalCode' => '9000',
-            'municipality' => 'Genk'
+            'municipality' => 'Genk',
+            'bus' => '3'
         ];
     }
 }

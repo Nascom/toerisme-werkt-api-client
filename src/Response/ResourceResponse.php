@@ -10,11 +10,24 @@ namespace Nascom\ToerismeWerktApiClient\Response;
 class ResourceResponse extends Response
 {
     /**
-     * @return array
+     * @var mixed
      */
-    public function getResource(): array
+    protected $resource;
+
+    public static function fromApiResponse(string $apiResponse): ResponseInterface
     {
-        return $this->getData()['data'] ?? [];
+        $response = parent::fromApiResponse($apiResponse);
+        $response->resource = $response->getData()['data'] ?? [];
+
+        return $response;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResource()
+    {
+        return $this->resource ?: [];
     }
 
     /**

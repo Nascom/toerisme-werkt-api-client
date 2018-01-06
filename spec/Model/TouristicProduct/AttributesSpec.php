@@ -2,14 +2,14 @@
 
 namespace spec\Nascom\ToerismeWerktApiClient\Model\TouristicProduct;
 
-use Nascom\ToerismeWerktApiClient\Model\Address;
-use Nascom\ToerismeWerktApiClient\Model\Location;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Address;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Location;
 use Nascom\ToerismeWerktApiClient\Model\TouristicProduct\Attributes;
 use PhpSpec\ObjectBehavior;
 use spec\Nascom\ToerismeWerktApiClient\BeConstructedFromArray;
 use spec\Nascom\ToerismeWerktApiClient\HasOptionalProperties;
-use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleAddress;
-use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleLocation;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SampleAddress;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SampleLocation;
 use spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct\SampleAttributes;
 
 class AttributesSpec extends ObjectBehavior

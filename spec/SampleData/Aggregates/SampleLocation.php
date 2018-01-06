@@ -1,11 +1,13 @@
 <?php
 
-namespace spec\Nascom\ToerismeWerktApiClient\SampleData;
+namespace spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates;
+
+use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleData;
 
 /**
  * Class SampleLocation
  *
- * @package spec\Nascom\ToerismeWerktApiClient\SampleData
+ * @package spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates
  */
 class SampleLocation extends SampleData
 {

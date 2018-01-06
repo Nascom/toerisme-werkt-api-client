@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\Nascom\ToerismeWerktApiClient\Model;
+namespace spec\Nascom\ToerismeWerktApiClient\Model\Aggregates;
 
-use Nascom\ToerismeWerktApiClient\Model\Address;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Address;
 use PhpSpec\ObjectBehavior;
 use spec\Nascom\ToerismeWerktApiClient\BeConstructedFromArray;
 use spec\Nascom\ToerismeWerktApiClient\HasOptionalProperties;
-use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleAddress;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SampleAddress;
 
 class AddressSpec extends ObjectBehavior
 {
@@ -49,6 +49,11 @@ class AddressSpec extends ObjectBehavior
         $this->getMunicipality()->shouldBe('Genk');
     }
 
+    function it_can_extract_the_bus()
+    {
+        $this->getBus()->shouldBe('3');
+    }
+
     function its_street_is_optional()
     {
         $this->hasOptionalProperty('street');
@@ -67,6 +72,11 @@ class AddressSpec extends ObjectBehavior
     function its_municipality_is_optional()
     {
         $this->hasOptionalProperty('municipality');
+    }
+
+    function its_bus_is_optional()
+    {
+        $this->hasOptionalProperty('bus');
     }
 
     protected function hasOptionalProperty(string $property)

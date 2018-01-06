@@ -3,15 +3,15 @@
 namespace Nascom\ToerismeWerktApiClient\Response\TouristicProducts;
 
 use Nascom\ToerismeWerktApiClient\Model\TouristicProduct\TouristicProduct;
-use Nascom\ToerismeWerktApiClient\Response\ListResponse;
+use Nascom\ToerismeWerktApiClient\Response\ResourceResponse;
 use Nascom\ToerismeWerktApiClient\Response\ResponseInterface;
 
 /**
- * Class ListTouristicProductsResponse
+ * Class TouristicProductResponse
  *
  * @package Nascom\ToerismeWerktApiClient\Response\TouristicProducts
  */
-class ListTouristicProductsResponse extends ListResponse
+class TouristicProductResponse extends ResourceResponse
 {
     /**
      * @inheritdoc
@@ -19,13 +19,24 @@ class ListTouristicProductsResponse extends ListResponse
     public static function fromApiResponse(string $apiResponse): ResponseInterface
     {
         $response = parent::fromApiResponse($apiResponse);
-        $response->list = array_map(
-            function (array $productListView): TouristicProduct {
-                return TouristicProduct::fromArray($productListView);
-            },
-            $response->list
-        );
+        $response->resource = TouristicProduct::fromArray($response->resource);
 
         return $response;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getResource()
+    {
+        return $this->resource;
+    }
+
+    /**
+     * @return TouristicProduct
+     */
+    public function getTouristicProduct(): TouristicProduct
+    {
+        return $this->getResource();
     }
 }
