@@ -5,3 +5,6 @@
 # Generated directories
 vendor/
 bin/
+
+# Composer
+composer.lock
