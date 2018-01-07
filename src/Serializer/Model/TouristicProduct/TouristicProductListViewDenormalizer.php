@@ -1,19 +1,18 @@
 <?php
 
-namespace Nascom\ToerismeWerktApiClient\Serializer\Response\TouristicProducts;
+namespace Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct;
 
 use Nascom\ToerismeWerktApiClient\Model\TouristicProduct\TouristicProductListView;
-use Nascom\ToerismeWerktApiClient\Response\TouristicProducts\ListTouristicProductsResponse;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 /**
- * Class ListTouristicProductsResponseDenormalizer
+ * Class TouristicProductListViewDenormalizer
  *
- * @package Nascom\ToerismeWerktApiClient\Serializer\Response\TouristicProducts
+ * @package Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct
  */
-class ListTouristicProductsResponseDenormalizer implements
+class TouristicProductListViewDenormalizer implements
     DenormalizerInterface,
     DenormalizerAwareInterface
 {
@@ -24,14 +23,11 @@ class ListTouristicProductsResponseDenormalizer implements
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        $products = $this->denormalizer->denormalize(
-            $data['data'],
-            TouristicProductListView::class . '[]'
-        );
-
-        return new ListTouristicProductsResponse(
-            $products,
-            $data['links'] ?? []
+        return new TouristicProductListView(
+            $data['id'],
+            $data['type'],
+            new \DateTime($data['attributes']['lastModified']),
+            $data['links']['self']
         );
     }
 
@@ -40,6 +36,6 @@ class ListTouristicProductsResponseDenormalizer implements
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type == ListTouristicProductsResponse::class;
+        return $type == TouristicProductListView::class;
     }
 }

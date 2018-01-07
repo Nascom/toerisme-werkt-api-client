@@ -7,8 +7,8 @@ use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\LocationDenormaliz
 use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\PricesDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\ErrorDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\RegionDenormalizer;
-use Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct\AttributesDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct\TouristicProductDenormalizer;
+use Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct\TouristicProductListViewDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Response\ErrorResponseDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Response\TokenResponseDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Response\TouristicProducts\ListTouristicProductsResponseDenormalizer;
@@ -42,7 +42,7 @@ class SerializerFactory
             // Models
             new ErrorDenormalizer(),
             new TouristicProductDenormalizer(),
-            new AttributesDenormalizer(),
+            new TouristicProductListViewDenormalizer(),
             new RegionDenormalizer(),
 
             // Aggregates
