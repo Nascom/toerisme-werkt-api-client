@@ -2,11 +2,9 @@
 
 namespace Nascom\ToerismeWerktApiClient\Serializer;
 
-use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\AddressDenormalizer;
-use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\LocationDenormalizer;
-use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\PricesDenormalizer;
-use Nascom\ToerismeWerktApiClient\Serializer\Model\ErrorDenormalizer;
-use Nascom\ToerismeWerktApiClient\Serializer\Model\RegionDenormalizer;
+use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\ClassificationDenormalizer;
+use Nascom\ToerismeWerktApiClient\Serializer\Model\Facility\FacilityCategoryDenormalizer;
+use Nascom\ToerismeWerktApiClient\Serializer\Model\Facility\FacilityDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct\TouristicProductDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct\TouristicProductListViewDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Response\ErrorResponseDenormalizer;
@@ -15,6 +13,8 @@ use Nascom\ToerismeWerktApiClient\Serializer\Response\TouristicProducts\ListTour
 use Nascom\ToerismeWerktApiClient\Serializer\Response\TouristicProducts\TouristicProductResponseDenormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 /**
@@ -32,23 +32,23 @@ class SerializerFactory
         $normalizers = [
             // We'll put this first so it'll have priority.
             new ErrorResponseDenormalizer(),
-            new ArrayDenormalizer(),
 
-            // Responses
+            // Responses.
             new TokenResponseDenormalizer(),
             new ListTouristicProductsResponseDenormalizer(),
             new TouristicProductResponseDenormalizer(),
 
-            // Models
-            new ErrorDenormalizer(),
+            // Models.
             new TouristicProductDenormalizer(),
             new TouristicProductListViewDenormalizer(),
-            new RegionDenormalizer(),
+            new ClassificationDenormalizer(),
+            new FacilityDenormalizer(),
+            new FacilityCategoryDenormalizer(),
 
-            // Aggregates
-            new AddressDenormalizer(),
-            new LocationDenormalizer(),
-            new PricesDenormalizer(),
+            // Symfony normalizers to handle the rest.
+            new DateTimeNormalizer(),
+            new ArrayDenormalizer(),
+            new ObjectNormalizer(null, new NameConverter())
         ];
 
         $encoders = [

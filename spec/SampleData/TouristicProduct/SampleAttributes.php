@@ -3,6 +3,8 @@
 namespace spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct;
 
 use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SampleAddress;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SampleCapacityStatistics;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SampleChain;
 use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SamplePrices;
 use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleData;
 use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SampleLocation;
@@ -30,7 +32,10 @@ class SampleAttributes extends SampleData
             'lastModified' => '2016-07-26T23:59:59Z',
             'closingPeriods' => [],
             'prices' => SamplePrices::asArray(),
-            'region' => SampleRegion::asArray()
+            'region' => SampleRegion::asArray(),
+            'capacityStatistics' => SampleCapacityStatistics::asArray(),
+            'name' => 'Heidezicht',
+            'chain' => SampleChain::class
         ];
     }
 }

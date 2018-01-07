@@ -2,8 +2,6 @@
 
 namespace Nascom\ToerismeWerktApiClient\Model\Aggregates;
 
-use Nascom\ToerismeWerktApiClient\Model\ArrayInstantiatable;
-
 /**
  * Class Address
  *
@@ -11,8 +9,6 @@ use Nascom\ToerismeWerktApiClient\Model\ArrayInstantiatable;
  */
 class Address
 {
-    use ArrayInstantiatable;
-
     /**
      * @var string|null
      */
@@ -47,11 +43,27 @@ class Address
     }
 
     /**
+     * @param null|string $street
+     */
+    public function setStreet(?string $street): void
+    {
+        $this->street = $street;
+    }
+
+    /**
      * @return null|string
      */
     public function getHouseNumber(): ?string
     {
         return $this->houseNumber;
+    }
+
+    /**
+     * @param null|string $houseNumber
+     */
+    public function setHouseNumber(?string $houseNumber): void
+    {
+        $this->houseNumber = $houseNumber;
     }
 
     /**
@@ -63,6 +75,14 @@ class Address
     }
 
     /**
+     * @param null|string $postalCode
+     */
+    public function setPostalCode(?string $postalCode): void
+    {
+        $this->postalCode = $postalCode;
+    }
+
+    /**
      * @return null|string
      */
     public function getMunicipality(): ?string
@@ -71,10 +91,26 @@ class Address
     }
 
     /**
+     * @param null|string $municipality
+     */
+    public function setMunicipality(?string $municipality): void
+    {
+        $this->municipality = $municipality;
+    }
+
+    /**
      * @return null|string
      */
     public function getBus(): ?string
     {
         return $this->bus;
+    }
+
+    /**
+     * @param null|string $bus
+     */
+    public function setBus(?string $bus): void
+    {
+        $this->bus = $bus;
     }
 }

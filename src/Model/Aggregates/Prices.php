@@ -2,8 +2,6 @@
 
 namespace Nascom\ToerismeWerktApiClient\Model\Aggregates;
 
-use Nascom\ToerismeWerktApiClient\Model\ArrayInstantiatable;
-
 /**
  * Class Prices
  *
@@ -11,8 +9,6 @@ use Nascom\ToerismeWerktApiClient\Model\ArrayInstantiatable;
  */
 class Prices
 {
-    use ArrayInstantiatable;
-
     /**
      * @var string|null
      */
@@ -29,30 +25,19 @@ class Prices
     private $averagePriceAdult;
 
     /**
-     * Prices constructor.
-     *
-     * @param null|string $individualPrices
-     * @param null|string $groupPrices
-     * @param null|string $averagePriceAdult
-     */
-    public function __construct
-    (
-        ?string $individualPrices,
-        ?string $groupPrices,
-        ?string $averagePriceAdult
-    )
-    {
-        $this->individualPrices = $individualPrices;
-        $this->groupPrices = $groupPrices;
-        $this->averagePriceAdult = $averagePriceAdult;
-    }
-
-    /**
      * @return null|string
      */
     public function getIndividualPrices(): ?string
     {
         return $this->individualPrices;
+    }
+
+    /**
+     * @param null|string $individualPrices
+     */
+    public function setIndividualPrices(?string $individualPrices): void
+    {
+        $this->individualPrices = $individualPrices;
     }
 
     /**
@@ -64,10 +49,26 @@ class Prices
     }
 
     /**
+     * @param null|string $groupPrices
+     */
+    public function setGroupPrices(?string $groupPrices): void
+    {
+        $this->groupPrices = $groupPrices;
+    }
+
+    /**
      * @return null|string
      */
     public function getAveragePriceAdult(): ?string
     {
         return $this->averagePriceAdult;
+    }
+
+    /**
+     * @param null|string $averagePriceAdult
+     */
+    public function setAveragePriceAdult(?string $averagePriceAdult): void
+    {
+        $this->averagePriceAdult = $averagePriceAdult;
     }
 }

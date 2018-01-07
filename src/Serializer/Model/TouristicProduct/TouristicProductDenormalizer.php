@@ -3,9 +3,17 @@
 namespace Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct;
 
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Address;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\CapacityStatistics;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Chain;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\CheckInTime;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Classification;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\ForeignLanguageDescription;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Image;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Location;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Prices;
+use Nascom\ToerismeWerktApiClient\Model\Facility\Facility;
 use Nascom\ToerismeWerktApiClient\Model\Region;
+use Nascom\ToerismeWerktApiClient\Model\Tag;
 use Nascom\ToerismeWerktApiClient\Model\TouristicProduct\Attributes;
 use Nascom\ToerismeWerktApiClient\Model\TouristicProduct\TouristicProduct;
 use Nascom\ToerismeWerktApiClient\Serializer\DataPropertyDenormalizer;
@@ -35,12 +43,22 @@ class TouristicProductDenormalizer implements
             'address' => Address::class,
             'location' => Location::class,
             'prices' => Prices::class,
-            'region' => Region::class
+            'region' => Region::class,
+            'capacityStatistics' => CapacityStatistics::class,
+            'chain' => Chain::class,
+            'lastModified' => \DateTime::class,
+            'comfortclassificatie' => Classification::class,
+            'tags' => Tag::class . '[]',
+            'checkinTimes' => CheckInTime::class . '[]',
+            'foreignLanguageDescriptions' => ForeignLanguageDescription::class . '[]',
+            'images' => Image::class . '[]',
+            'facilities' => Facility::class . '[]'
         ];
         $attributes = $this->mapDataProperties($data['attributes'], $mapping);
+        unset($data['attributes']);
         $data += $attributes;
 
-        return TouristicProduct::fromArray($data);
+        return $this->denormalizer->denormalize($data, TouristicProduct::class);
     }
 
     /**
@@ -48,6 +66,6 @@ class TouristicProductDenormalizer implements
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type == TouristicProduct::class;
+        return $type == TouristicProduct::class && !empty($data['attributes']);
     }
 }

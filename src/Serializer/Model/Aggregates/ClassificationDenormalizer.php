@@ -2,26 +2,22 @@
 
 namespace Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates;
 
-use Nascom\ToerismeWerktApiClient\Model\Aggregates\Prices;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Classification;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 /**
- * Class PricesDenormalizer
+ * Class ClassificationDenormalizer
  *
  * @package Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates
  */
-class PricesDenormalizer implements DenormalizerInterface
+class ClassificationDenormalizer implements DenormalizerInterface
 {
     /**
      * @inheritdoc
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        return new Prices(
-            $data['individueleTarieven'] ?? null,
-            $data['groepsTarieven'] ?? null,
-            $data['gemiddeldeRichtPrijsVolwassenPersoon'] ?? null
-        );
+        return Classification::fromString($data);
     }
 
     /**
@@ -29,7 +25,7 @@ class PricesDenormalizer implements DenormalizerInterface
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type == Prices::class;
+        return $type == Classification::class;
     }
 
 }
