@@ -17,21 +17,13 @@ class ErrorResponse extends Response
     private $errors = [];
 
     /**
-     * @inheritdoc
+     * ErrorResponse constructor.
+     *
+     * @param array $errors
      */
-    public static function fromApiResponse(string $apiResponse): ResponseInterface
+    public function __construct(array $errors)
     {
-        $errorResponse = new static($apiResponse);
-        $errors = $errorResponse->getData()['errors'] ?? [];
-
-        $errorResponse->errors = array_map(function (array $errorData): Error {
-            return new Error(
-                $errorData['title'] ?? '',
-                $errorData['detail'] ?? ''
-            );
-        }, $errors);
-
-        return $errorResponse;
+        $this->errors = $errors;
     }
 
     /**

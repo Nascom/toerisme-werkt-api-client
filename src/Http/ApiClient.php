@@ -7,10 +7,13 @@ use GuzzleHttp\Exception\RequestException;
 use Nascom\ToerismeWerktApiClient\Exception\AuthenticationFailedException;
 use Nascom\ToerismeWerktApiClient\Request\Auth\GetTokenRequest;
 use Nascom\ToerismeWerktApiClient\Request\RequestInterface;
+use Nascom\ToerismeWerktApiClient\Response\ErrorResponse;
 use Nascom\ToerismeWerktApiClient\Response\TokenResponse;
-use Nascom\ToerismeWerktApiClient\ResponseHandler\ResponseHandler;
-use Nascom\ToerismeWerktApiClient\ResponseHandler\ResponseHandlerInterface;
+use Nascom\ToerismeWerktApiClient\Response\TouristicProducts\ListTouristicProductsResponse;
+use Nascom\ToerismeWerktApiClient\Serializer\SerializerFactory;
 use Psr\Http\Message\ResponseInterface;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct\SampleTouristicProductListResponse;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Class ApiClient
@@ -35,9 +38,9 @@ class ApiClient implements ApiClientInterface
     protected $apiKey;
 
     /**
-     * @var ResponseHandler
+     * @var SerializerInterface
      */
-    protected $responseHandler;
+    protected $serializer;
 
     /**
      * @var array
@@ -57,7 +60,7 @@ class ApiClient implements ApiClientInterface
      * @param string $apiBaseUri
      * @param string $apiKey
      * @param array $options
-     * @param ResponseHandlerInterface $responseHandler
+     * @param SerializerInterface $serializer
      */
     public function __construct
     (
@@ -65,14 +68,14 @@ class ApiClient implements ApiClientInterface
         string $apiBaseUri,
         string $apiKey,
         array $options = [],
-        ResponseHandlerInterface $responseHandler = null
+        SerializerInterface $serializer = null
     )
     {
         $this->httpClient = $httpClient;
         $this->apiBaseUri = $apiBaseUri;
         $this->apiKey = $apiKey;
         $this->options = array_merge_recursive($this->options, $options);
-        $this->responseHandler = $responseHandler ?: new ResponseHandler();
+        $this->serializer = $serializer ?: SerializerFactory::create();
     }
 
     /**

@@ -16,6 +16,16 @@ class ListResponse extends Response implements \IteratorAggregate
     protected $list;
 
     /**
+     * ListResponse constructor.
+     *
+     * @param array $list
+     */
+    public function __construct(array $list)
+    {
+        $this->list = $list;
+    }
+
+    /**
      * @inheritdoc
      */
     public static function fromApiResponse(string $apiResponse): ResponseInterface

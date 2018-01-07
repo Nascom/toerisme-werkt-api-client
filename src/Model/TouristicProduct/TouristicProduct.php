@@ -1,7 +1,6 @@
 <?php
 
 namespace Nascom\ToerismeWerktApiClient\Model\TouristicProduct;
-use Nascom\ToerismeWerktApiClient\Model\ArrayInstantiatable;
 
 /**
  * Class TouristicProduct
@@ -10,8 +9,6 @@ use Nascom\ToerismeWerktApiClient\Model\ArrayInstantiatable;
  */
 class TouristicProduct
 {
-    use ArrayInstantiatable;
-
     /**
      * @var string
      */
@@ -28,16 +25,22 @@ class TouristicProduct
     private $attributes;
 
     /**
-     * @param array $data
-     * @return TouristicProduct
+     * TouristicProduct constructor.
+     *
+     * @param string $type
+     * @param string $id
+     * @param Attributes $attributes
      */
-    public static function fromArray(array $data): self
+    public function __construct
+    (
+        string $type,
+        string $id,
+        Attributes $attributes
+    )
     {
-        $listView = new static;
-        $listView->setPropertiesFromArray($data);
-        $listView->attributes = Attributes::fromArray($listView->attributes ?: []);
-
-        return $listView;
+        $this->type = $type;
+        $this->id = $id;
+        $this->attributes = $attributes;
     }
 
     /**
