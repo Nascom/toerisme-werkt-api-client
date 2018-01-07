@@ -1,12 +1,17 @@
 <?php
 
 namespace Nascom\ToerismeWerktApiClient\Model\TouristicProduct;
+
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Address;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Location;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Prices;
 use Nascom\ToerismeWerktApiClient\Model\ArrayInstantiatable;
+use Nascom\ToerismeWerktApiClient\Model\Region;
 
 /**
  * Class TouristicProduct
  *
- * @package Nascom\ToerismeWerktApiClient\Model\TouristicProduct
+ * @package Nascom\ToerismeWerktApiClient\Model
  */
 class TouristicProduct
 {
@@ -23,22 +28,49 @@ class TouristicProduct
     private $id;
 
     /**
-     * @var Attributes
+     * @var string|null
      */
-    private $attributes;
+    private $touristicProductType;
 
     /**
-     * @param array $data
-     * @return TouristicProduct
+     * @var string|null
      */
-    public static function fromArray(array $data): self
-    {
-        $listView = new static;
-        $listView->setPropertiesFromArray($data);
-        $listView->attributes = Attributes::fromArray($listView->attributes ?: []);
+    private $title;
 
-        return $listView;
-    }
+    /**
+     * @var string|null
+     */
+    private $description;
+
+    /**
+     * @var Address
+     */
+    private $address;
+
+    /**
+     * @var Location
+     */
+    private $location;
+
+    /**
+     * @var string|null
+     */
+    private $image;
+
+    /**
+     * @var \DateTime
+     */
+    private $lastModified;
+
+    /**
+     * @var Prices
+     */
+    private $prices;
+
+    /**
+     * @var Region
+     */
+    private $region;
 
     /**
      * @return string
@@ -57,10 +89,74 @@ class TouristicProduct
     }
 
     /**
-     * @return Attributes
+     * @return null|string
      */
-    public function getAttributes(): Attributes
+    public function getTouristicProductType(): ?string
     {
-        return $this->attributes;
+        return $this->touristicProductType;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getAddress(): Address
+    {
+        return $this->address;
+    }
+
+    /**
+     * @return Location
+     */
+    public function getLocation(): Location
+    {
+        return $this->location;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getLastModified(): \DateTime
+    {
+        return $this->lastModified;
+    }
+
+    /**
+     * @return Prices
+     */
+    public function getPrices(): Prices
+    {
+        return $this->prices;
+    }
+
+    /**
+     * @return Region
+     */
+    public function getRegion(): Region
+    {
+        return $this->region;
     }
 }

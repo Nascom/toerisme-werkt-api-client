@@ -26,9 +26,27 @@ class SampleTouristicProductListResponse extends SampleData
                 'first' => 'http://foo.bar/api/v2/touristicproducts/?page[offset]=1',
             ],
             'data' => [
-                SampleTouristicProductListView::asArray(),
-                SampleTouristicProductListView::asArray()
-            ]
+                [
+                    'id' => 'TouristicProduct-00001',
+                    'type' => 'touristicproduct',
+                    'attributes' => [
+                        'lastModified' => '2018-01-04T11:03:40+01:00'
+                    ],
+                    'links' => [
+                        'self' => 'https://api.toerismewerkt.be/api/v2/touristicproducts/TouristicProduct-00001'
+                    ]
+                ],
+                [
+                    'id' => 'TouristicProduct-00002',
+                    'type' => 'touristicproduct',
+                    'attributes' => [
+                        'lastModified' => '2018-01-04T11:03:40+01:00'
+                    ],
+                    'links' => [
+                        'self' => 'https://api.toerismewerkt.be/api/v2/touristicproducts/TouristicProduct-00002'
+                    ]
+                ]
+            ],
         ];
     }
 }

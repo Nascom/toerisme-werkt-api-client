@@ -7,7 +7,7 @@ use Nascom\ToerismeWerktApiClient\Model\TouristicProduct\TouristicProduct;
 use PhpSpec\ObjectBehavior;
 use spec\Nascom\ToerismeWerktApiClient\BeConstructedFromArray;
 use spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct\SampleAttributes;
-use spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct\SampleTouristicProductListView;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct\SampleTouristicProduct;
 
 class TouristicProductSpec extends ObjectBehavior
 {
@@ -15,7 +15,7 @@ class TouristicProductSpec extends ObjectBehavior
 
     function let()
     {
-        $this->beConstructedFromArray(SampleTouristicProductListView::asArray());
+        $this->beConstructedFromArray(SampleTouristicProduct::asArray());
     }
 
     function it_is_initializable()

@@ -14,12 +14,33 @@ class ResourceResponse extends Response
      */
     protected $resource;
 
-    public static function fromApiResponse(string $apiResponse): ResponseInterface
-    {
-        $response = parent::fromApiResponse($apiResponse);
-        $response->resource = $response->getData()['data'] ?? [];
+    /**
+     * @var array
+     */
+    private $relationships;
 
-        return $response;
+    /**
+     * @var array
+     */
+    private $links;
+
+    /**
+     * ResourceResponse constructor.
+     *
+     * @param $resource
+     * @param array $relationships
+     * @param array $links
+     */
+    public function __construct
+    (
+        $resource,
+        array $relationships = [],
+        array $links = []
+    )
+    {
+        $this->resource = $resource;
+        $this->relationships = $relationships;
+        $this->links = $links;
     }
 
     /**
@@ -27,7 +48,7 @@ class ResourceResponse extends Response
      */
     public function getResource()
     {
-        return $this->resource ?: [];
+        return $this->resource;
     }
 
     /**
@@ -35,7 +56,7 @@ class ResourceResponse extends Response
      */
     public function getRelationships(): array
     {
-        return $this->getData()['relationships'] ?? [];
+        return $this->relationships;
     }
 
     /**
@@ -43,6 +64,6 @@ class ResourceResponse extends Response
      */
     public function getLinks(): array
     {
-        return $this->getData()['links'] ?? [];
+        return $this->links;
     }
 }

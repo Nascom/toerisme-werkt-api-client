@@ -39,18 +39,6 @@ class Address
     private $bus;
 
     /**
-     * @param array $data
-     * @return Address
-     */
-    public static function fromArray(array $data): self
-    {
-        $address = new static;
-        $address->setPropertiesFromArray($data);
-
-        return $address;
-    }
-
-    /**
      * @return null|string
      */
     public function getStreet(): ?string

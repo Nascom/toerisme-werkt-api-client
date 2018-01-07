@@ -17,20 +17,13 @@ class TokenResponse extends Response
     private $token;
 
     /**
-     * @inheritdoc
+     * TokenResponse constructor.
+     *
+     * @param string $token
      */
-    public static function fromApiResponse(string $apiResponse): ResponseInterface
+    public function __construct(string $token)
     {
-        $tokenResponse = new static($apiResponse);
-        $data = $tokenResponse->getData();
-        if (empty($data['meta']['token'])) {
-            throw new MalformedResponseDataException(
-                'Token not present in the response data.'
-            );
-        }
-        $tokenResponse->token = $data['meta']['token'];
-
-        return $tokenResponse;
+        $this->token = $token;
     }
 
     /**

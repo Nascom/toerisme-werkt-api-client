@@ -1,7 +1,6 @@
 <?php
 
 namespace Nascom\ToerismeWerktApiClient\Response;
-use Traversable;
 
 /**
  * Class ListResponse
@@ -16,14 +15,24 @@ class ListResponse extends Response implements \IteratorAggregate
     protected $list;
 
     /**
-     * @inheritdoc
+     * @var array
      */
-    public static function fromApiResponse(string $apiResponse): ResponseInterface
-    {
-        $listResponse = parent::fromApiResponse($apiResponse);
-        $listResponse->list = $listResponse->getData()['data'] ?? [];
+    private $links;
 
-        return $listResponse;
+    /**
+     * ListResponse constructor.
+     *
+     * @param array $list
+     * @param array $links
+     */
+    public function __construct
+    (
+        array $list,
+        array $links
+    )
+    {
+        $this->list = $list;
+        $this->links = $links;
     }
 
     /**
@@ -49,7 +58,7 @@ class ListResponse extends Response implements \IteratorAggregate
      */
     public function getLinks(): array
     {
-        return $this->getData()['links'];
+        return $this->links;
     }
 
     /**
