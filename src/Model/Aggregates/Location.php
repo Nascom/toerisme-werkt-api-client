@@ -20,16 +20,15 @@ class Location
     private $latitude;
 
     /**
-     * @param array $data
-     * @return Location
+     * Location constructor.
+     *
+     * @param float $longitude
+     * @param float $latitude
      */
-    public static function fromArray(array $data): self
+    public function __construct(float $longitude, float $latitude)
     {
-        $location = new static;
-        $location->latitude = (float) ($data['latitude'] ?? 0.0);
-        $location->longitude = (float) ($data['longitude'] ?? 0.0);
-
-        return $location;
+        $this->longitude = $longitude;
+        $this->latitude = $latitude;
     }
 
     /**

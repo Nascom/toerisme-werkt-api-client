@@ -3,8 +3,10 @@
 namespace Nascom\ToerismeWerktApiClient\Model\TouristicProduct;
 
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Address;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Prices;
 use Nascom\ToerismeWerktApiClient\Model\ArrayInstantiatable;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Location;
+use Nascom\ToerismeWerktApiClient\Model\Region;
 
 /**
  * Class Attributes
@@ -50,24 +52,15 @@ class Attributes
      */
     private $lastModified;
 
+    /**
+     * @var Prices
+     */
     private $prices;
 
     /**
-     * @param array $data
-     * @return Attributes
+     * @var Region
      */
-    public static function fromArray(array $data): self
-    {
-        $attributes = new static;
-        $attributes->setPropertiesFromArray($data);
-        $attributes->address = Address::fromArray($attributes->address ?: []);
-        $attributes->location = Location::fromArray($attributes->location ?: []);
-        if (!empty($attributes->lastModified)) {
-            $attributes->lastModified = new \DateTime($attributes->lastModified);
-        }
-
-        return $attributes;
-    }
+    private $region;
 
     /**
      * @return null|string
@@ -123,5 +116,21 @@ class Attributes
     public function getLastModified(): \DateTime
     {
         return $this->lastModified;
+    }
+
+    /**
+     * @return Prices
+     */
+    public function getPrices(): Prices
+    {
+        return $this->prices;
+    }
+
+    /**
+     * @return Region
+     */
+    public function getRegion(): Region
+    {
+        return $this->region;
     }
 }

@@ -3,8 +3,10 @@
 namespace spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct;
 
 use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SampleAddress;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SamplePrices;
 use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleData;
 use spec\Nascom\ToerismeWerktApiClient\SampleData\Aggregates\SampleLocation;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleRegion;
 
 /**
  * Class SampleAttributes
@@ -25,7 +27,10 @@ class SampleAttributes extends SampleData
             'address' => SampleAddress::asArray(),
             'location' => SampleLocation::asArray(),
             'image' => 'http://foo.bar/image.jpg​',
-            'lastModified' => '2016-07-26T23:59:59Z'
+            'lastModified' => '2016-07-26T23:59:59Z',
+            'closingPeriods' => [],
+            'prices' => SamplePrices::asArray(),
+            'region' => SampleRegion::asArray()
         ];
     }
 }

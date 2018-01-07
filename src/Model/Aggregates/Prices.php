@@ -29,21 +29,22 @@ class Prices
     private $averagePriceAdult;
 
     /**
-     * @param array $data
-     * @return Prices
+     * Prices constructor.
+     *
+     * @param null|string $individualPrices
+     * @param null|string $groupPrices
+     * @param null|string $averagePriceAdult
      */
-    public static function fromArray(array $data): self
+    public function __construct
+    (
+        ?string $individualPrices,
+        ?string $groupPrices,
+        ?string $averagePriceAdult
+    )
     {
-        $prices = new static;
-        $mapping = [
-            'individueleTarieven' => 'individualPrices',
-            'groepsTarieven' => 'groupPrices',
-            'gemiddeldeRichtPrijsVolwassenPersoon' => 'averagePriceAdult'
-        ];
-        $data = $prices->mapData($mapping, $data);
-        $prices->setPropertiesFromArray($data);
-
-        return $prices;
+        $this->individualPrices = $individualPrices;
+        $this->groupPrices = $groupPrices;
+        $this->averagePriceAdult = $averagePriceAdult;
     }
 
     /**

@@ -26,8 +26,8 @@ class SampleTouristicProductListResponse extends SampleData
                 'first' => 'http://foo.bar/api/v2/touristicproducts/?page[offset]=1',
             ],
             'data' => [
-                SampleTouristicProductListView::asArray(),
-                SampleTouristicProductListView::asArray()
+                SampleTouristicProduct::asArray(),
+                SampleTouristicProduct::asArray()
             ]
         ];
     }

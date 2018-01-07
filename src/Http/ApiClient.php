@@ -13,6 +13,7 @@ use Nascom\ToerismeWerktApiClient\Response\TouristicProducts\ListTouristicProduc
 use Nascom\ToerismeWerktApiClient\Serializer\SerializerFactory;
 use Psr\Http\Message\ResponseInterface;
 use spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct\SampleTouristicProductListResponse;
+use spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct\SampleTouristicProductResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
@@ -101,9 +102,10 @@ class ApiClient implements ApiClientInterface
             throw $e;
         }
 
-        return $this->responseHandler->parseResponse(
+        return $this->serializer->deserialize(
             $response->getBody()->getContents(),
-            $request->getResponseClass()
+            $request->getResponseClass(),
+            'json'
         );
     }
 

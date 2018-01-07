@@ -5,11 +5,11 @@ namespace spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct;
 use spec\Nascom\ToerismeWerktApiClient\SampleData\SampleData;
 
 /**
- * Class SampleTouristicProductListView
+ * Class SampleTouristicProduct
  *
  * @package spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct
  */
-class SampleTouristicProductListView extends SampleData
+class SampleTouristicProduct extends SampleData
 {
     /**
      * @inheritdoc
