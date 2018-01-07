@@ -7,13 +7,9 @@ use GuzzleHttp\Exception\RequestException;
 use Nascom\ToerismeWerktApiClient\Exception\AuthenticationFailedException;
 use Nascom\ToerismeWerktApiClient\Request\Auth\GetTokenRequest;
 use Nascom\ToerismeWerktApiClient\Request\RequestInterface;
-use Nascom\ToerismeWerktApiClient\Response\ErrorResponse;
 use Nascom\ToerismeWerktApiClient\Response\TokenResponse;
-use Nascom\ToerismeWerktApiClient\Response\TouristicProducts\ListTouristicProductsResponse;
 use Nascom\ToerismeWerktApiClient\Serializer\SerializerFactory;
 use Psr\Http\Message\ResponseInterface;
-use spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct\SampleTouristicProductListResponse;
-use spec\Nascom\ToerismeWerktApiClient\SampleData\TouristicProduct\SampleTouristicProductResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
