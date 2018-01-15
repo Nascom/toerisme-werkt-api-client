@@ -9,6 +9,7 @@ use Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct\TouristicPro
 use Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct\TouristicProductListViewDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Response\ErrorResponseDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Response\TokenResponseDenormalizer;
+use Nascom\ToerismeWerktApiClient\Serializer\Response\Facilities\ListFacilitiesResponseDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Response\TouristicProducts\ListTouristicProductsResponseDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Response\TouristicProducts\TouristicProductResponseDenormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -37,6 +38,7 @@ class SerializerFactory
             new TokenResponseDenormalizer(),
             new ListTouristicProductsResponseDenormalizer(),
             new TouristicProductResponseDenormalizer(),
+            new ListFacilitiesResponseDenormalizer(),
 
             // Models.
             new TouristicProductDenormalizer(),

@@ -21,16 +21,23 @@ class FacilityDenormalizer implements
     use DenormalizerAwareTrait;
     use DataPropertyDenormalizer;
 
+    /**
+     * @inheritdoc
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        $data = $this->mapDataPropertyTo($data, 'category', FacilityCategory::class);
+        // We'll disregard the category for now. @todo.
+        $data['description'] = $data['attributes']['description'];
+        unset($data['attributes']);
+
         return $this->denormalizer->denormalize($data, $class);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type == Facility::class
-            && isset($data['category'])
-            && is_array($data['category']);
+        return $type == Facility::class && isset($data['attributes']);
     }
 }
