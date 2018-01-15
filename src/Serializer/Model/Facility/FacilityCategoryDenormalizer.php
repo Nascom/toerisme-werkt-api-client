@@ -25,7 +25,6 @@ class FacilityCategoryDenormalizer implements
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        dump($data);
         $data = $this->mapDataPropertyTo($data, 'parent', FacilityCategory::class);
         return $this->denormalizer->denormalize($data, $class);
     }
