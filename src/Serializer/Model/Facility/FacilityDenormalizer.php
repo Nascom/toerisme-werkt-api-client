@@ -18,19 +18,32 @@ class FacilityDenormalizer implements
     DenormalizerInterface,
     DenormalizerAwareInterface
 {
-    use DenormalizerAwareTrait;
     use DataPropertyDenormalizer;
+    use DenormalizerAwareTrait;
 
     /**
      * @inheritdoc
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        // We'll disregard the category for now. @todo.
-        $data['description'] = $data['attributes']['description'];
-        unset($data['attributes']);
+        $facility = new Facility();
+        $facility->setDescription($data['attributes']['description'] ?? null);
+        $facility->setId($data['id']);
 
-        return $this->denormalizer->denormalize($data, $class);
+        // When attached to a touristic product, the facility has a 'category'
+        // property containing the entire category object.
+        // When fetching a list of all facilities, the response contains a
+        // 'attributes' property with only the category ID set.
+        // For now, we'll only deserialize the category when it's fully set.
+        if (isset($data['category'])) {
+            $category = $this->denormalizer->denormalize(
+                $data['category'],
+                FacilityCategory::class
+            );
+            $facility->setCategory($category);
+        }
+
+        return $facility;
     }
 
     /**
@@ -38,6 +51,6 @@ class FacilityDenormalizer implements
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type == Facility::class && isset($data['attributes']);
+        return $type == Facility::class;
     }
 }
