@@ -40,4 +40,12 @@ class Classification
     {
         return str_repeat('*', $this->rating);
     }
+
+    /**
+     * @return int
+     */
+    public function getRating(): int
+    {
+        return $this->rating;
+    }
 }
