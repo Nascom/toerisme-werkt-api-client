@@ -25,6 +25,11 @@ class Prices
     private $averagePriceAdult;
 
     /**
+     * @var array
+     */
+    private $yearlyPrices = [];
+
+    /**
      * @return null|string
      */
     public function getIndividualPrices(): ?string
@@ -70,5 +75,30 @@ class Prices
     public function setAveragePriceAdult(?string $averagePriceAdult): void
     {
         $this->averagePriceAdult = $averagePriceAdult;
+    }
+
+    /**
+     * @return array
+     */
+    public function getYearlyPrices(): array
+    {
+        return $this->yearlyPrices;
+    }
+
+    /**
+     * @param array $yearlyPrices
+     */
+    public function setYearlyPrices(array $yearlyPrices): void
+    {
+        $this->yearlyPrices = $yearlyPrices;
+    }
+
+    /**
+     * @param int $year
+     * @return array
+     */
+    public function getYearlyPriceFor(int $year): array
+    {
+        return $this->yearlyPrices['y' . $year] ?? [];
     }
 }

@@ -13,6 +13,7 @@ class NameConverter implements NameConverterInterface
 {
     private $mapping = [
         // Prices
+        'jaarlijks' => 'yearlyPrices',
         'individueleTarieven' => 'individualPrices',
         'groepsTarieven' => 'groupPrices',
         'gemiddeldeRichtPrijsVolwassenPersoon' => 'averagePriceAdult',
