@@ -35,12 +35,12 @@ class TouristicProduct
     /**
      * @var ClosingPeriod[]
      */
-    private $closingPeriods;
+    private $closingPeriods = [];
 
     /**
      * @var OpeningHours[]
      */
-    private $openingHours;
+    private $openingHours = [];
 
     /**
      * @var string
