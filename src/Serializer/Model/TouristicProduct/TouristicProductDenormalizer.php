@@ -10,6 +10,7 @@ use Nascom\ToerismeWerktApiClient\Model\Aggregates\Classification;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\ForeignLanguageDescription;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Image;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Location;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\OpeningHours;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Prices;
 use Nascom\ToerismeWerktApiClient\Model\Facility\Facility;
 use Nascom\ToerismeWerktApiClient\Model\Region;
@@ -52,7 +53,8 @@ class TouristicProductDenormalizer implements
             'checkinTimes' => CheckInTime::class . '[]',
             'foreignLanguageDescriptions' => ForeignLanguageDescription::class . '[]',
             'images' => Image::class . '[]',
-            'facilities' => Facility::class . '[]'
+            'facilities' => Facility::class . '[]',
+            'openingHours' => OpeningHours::class . '[]'
         ];
         $attributes = $this->mapDataProperties($data['attributes'], $mapping);
         unset($data['attributes']);
