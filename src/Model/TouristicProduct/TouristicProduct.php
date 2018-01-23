@@ -197,6 +197,15 @@ class TouristicProduct
     private $emailAddress;
 
     /**
+     * TouristicProduct constructor.
+     */
+    public function __construct()
+    {
+        // Initialize default aggregates.
+        $this->prices = new Prices();
+    }
+
+    /**
      * @return string
      */
     public function getType(): string
