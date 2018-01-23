@@ -12,17 +12,17 @@ class ClosingPeriod
     /**
      * @var string
      */
-    private $startDate;
+    private $startDate = '';
 
     /**
      * @var string
      */
-    private $endDate;
+    private $endDate = '';
 
     /**
      * @var string
      */
-    private $remarks;
+    private $remarks = '';
 
     /**
      * @return string
