@@ -27,6 +27,11 @@ class NameConverter implements NameConverterInterface
         'inCheckenVanaf' => 'checkInStarting',
         'uitCheckenTot' => 'checkOutUltimatelyAt',
 
+        // Closing periods
+        'startDatum' => 'startDate',
+        'eindDatum' => 'endDate',
+        'opmerking' => 'remarks',
+
         // Foreign language description
         'label_title' => 'labelTitle',
         'label_description' => 'labelDescription',
