@@ -19,8 +19,8 @@ class TagDenormalizer implements DenormalizerInterface
     {
         $tag = new Tag();
         $tag->setId($data['id']);
-        $tag->setName($data['attributes']['name']);
-        $tag->setCategory($data['attributes']['category']);
+        $tag->setName($data['name'] ?? $data['attributes']['name']);
+        $tag->setCategory($data['category'] ?? $data['attributes']['category']);
 
         return $tag;
     }
