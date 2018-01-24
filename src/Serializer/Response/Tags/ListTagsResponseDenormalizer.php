@@ -1,19 +1,19 @@
 <?php
 
-namespace Nascom\ToerismeWerktApiClient\Serializer\Response\Facilities;
+namespace Nascom\ToerismeWerktApiClient\Serializer\Response\Tags;
 
-use Nascom\ToerismeWerktApiClient\Model\Facility\Facility;
-use Nascom\ToerismeWerktApiClient\Response\Facilities\ListFacilitiesResponse;
+use Nascom\ToerismeWerktApiClient\Model\Tag;
+use Nascom\ToerismeWerktApiClient\Response\Tags\ListTagsResponse;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 /**
- * Class ListFacilitiesResponseDenormalizer
+ * Class ListTagsResponseDenormalizer
  *
  * @package Nascom\ToerismeWerktApiClient\Serializer\Response\Facilities
  */
-class ListFacilitiesResponseDenormalizer implements
+class ListTagsResponseDenormalizer implements
     DenormalizerInterface,
     DenormalizerAwareInterface
 {
@@ -24,13 +24,13 @@ class ListFacilitiesResponseDenormalizer implements
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        $facilities = $this->denormalizer->denormalize(
+        $tags = $this->denormalizer->denormalize(
             $data['data'],
-            Facility::class . '[]'
+            Tag::class . '[]'
         );
 
-        return new ListFacilitiesResponse(
-            $facilities,
+        return new ListTagsResponse(
+            $tags,
             $data['links'] ?? []
         );
     }
@@ -40,6 +40,6 @@ class ListFacilitiesResponseDenormalizer implements
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type == ListFacilitiesResponse::class;
+        return $type == ListTagsResponse::class;
     }
 }
