@@ -38,7 +38,8 @@ class NameConverter implements NameConverterInterface
 
         // Other
         'comfortclassificatie' => 'comfortClassification',
-        'BTW' => 'vat'
+        'BTW' => 'vat',
+        'holidaysOpeningHours' => 'holidayOpeningHours'
     ];
 
     /**

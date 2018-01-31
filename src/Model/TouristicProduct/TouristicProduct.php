@@ -9,6 +9,7 @@ use Nascom\ToerismeWerktApiClient\Model\Aggregates\CheckInTime;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Classification;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\ClosingPeriod;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\ForeignLanguageDescription;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\HolidayOpeningHours;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Image;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Location;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\OpeningHours;
@@ -26,11 +27,15 @@ class TouristicProduct
 {
     /**
      * @todo add the following:
-     * - holidayOpeningHours
      * - attractionCategories
      * - sightCategories
      * - miceCategories
      */
+
+    /**
+     * @var HolidayOpeningHours[]
+     */
+    private $holidayOpeningHours = [];
 
     /**
      * @var ClosingPeriod[]
@@ -774,5 +779,21 @@ class TouristicProduct
     public function setClosingPeriods(array $closingPeriods): void
     {
         $this->closingPeriods = $closingPeriods;
+    }
+
+    /**
+     * @return HolidayOpeningHours[]
+     */
+    public function getHolidayOpeningHours(): array
+    {
+        return $this->holidayOpeningHours;
+    }
+
+    /**
+     * @param HolidayOpeningHours[] $holidayOpeningHours
+     */
+    public function setHolidayOpeningHours(array $holidayOpeningHours): void
+    {
+        $this->holidayOpeningHours = $holidayOpeningHours;
     }
 }
