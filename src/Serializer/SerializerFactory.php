@@ -2,6 +2,7 @@
 
 namespace Nascom\ToerismeWerktApiClient\Serializer;
 
+use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\CapacityStatisticsDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\ClassificationDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\OpeningHoursDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\Facility\FacilityCategoryDenormalizer;
@@ -52,6 +53,7 @@ class SerializerFactory
             new FacilityCategoryDenormalizer(),
             new OpeningHoursDenormalizer(),
             new TagDenormalizer(),
+            new  CapacityStatisticsDenormalizer(),
 
             // Symfony normalizers to handle the rest.
             new DateTimeNormalizer(),
