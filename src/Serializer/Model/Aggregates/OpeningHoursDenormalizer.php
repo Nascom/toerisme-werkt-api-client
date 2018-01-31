@@ -34,7 +34,11 @@ class OpeningHoursDenormalizer implements
         $data = $this->mapDataProperties($data, $mapping);
 
         $openingHours = new OpeningHours();
-        $openingHours->setDays($data['days']);
+        // @todo: sometimes 'hours' is returned from the API instead of 'days'.
+        // We'll have to change the model for this.
+        if (isset($data['days'])) {
+            $openingHours->setDays($data['days']);
+        }
         $openingHours->setFrom($data['from']);
         $openingHours->setTill($data['till']);
 
