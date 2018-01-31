@@ -12,12 +12,12 @@ class Region
     /**
      * @var string
      */
-    private $id;
+    private $id = '';
 
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * Region constructor.
@@ -40,10 +40,26 @@ class Region
     }
 
     /**
+     * @param string $id
+     */
+    public function setId(string $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return string
      */
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
     }
 }
