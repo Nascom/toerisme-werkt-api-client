@@ -15,6 +15,11 @@ class OpeningHours
     private $days;
 
     /**
+     * @var Period|null
+     */
+    private $hours;
+
+    /**
      * @var \DateTime
      */
     private $from;
@@ -70,5 +75,21 @@ class OpeningHours
     public function setTill(\DateTime $till): void
     {
         $this->till = $till;
+    }
+
+    /**
+     * @return Period|null
+     */
+    public function getHours(): ?Period
+    {
+        return $this->hours;
+    }
+
+    /**
+     * @param Period $hours
+     */
+    public function setHours(Period $hours): void
+    {
+        $this->hours = $hours;
     }
 }

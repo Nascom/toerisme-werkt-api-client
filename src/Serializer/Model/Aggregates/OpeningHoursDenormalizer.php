@@ -4,6 +4,7 @@ namespace Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates;
 
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\OpeningHours;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\OpeningHoursDay;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\Period;
 use Nascom\ToerismeWerktApiClient\Serializer\DataPropertyDenormalizer;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -28,19 +29,19 @@ class OpeningHoursDenormalizer implements
     {
         $mapping = [
             'days' => OpeningHoursDay::class . '[]',
+            'hours' => Period::class,
             'from' => \DateTime::class,
             'till' => \DateTime::class
         ];
         $data = $this->mapDataProperties($data, $mapping);
 
         $openingHours = new OpeningHours();
-        // @todo: sometimes 'hours' is returned from the API instead of 'days'.
-        // We'll have to change the model for this.
-        if (isset($data['days'])) {
-            $openingHours->setDays($data['days']);
-        }
+        $openingHours->setDays($data['days'] ?? []);
         $openingHours->setFrom($data['from']);
         $openingHours->setTill($data['till']);
+        if (isset($data['hours'])) {
+            $openingHours->setHours($data['hours']);
+        }
 
         return $openingHours;
     }
