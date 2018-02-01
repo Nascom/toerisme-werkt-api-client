@@ -111,8 +111,10 @@ class ApiClient implements ApiClientInterface
      */
     protected function isTokenExpired(RequestException $e): bool
     {
-        // @todo: actually perform this check.
-        return $e->getResponse()->getStatusCode() == 401 && false;
+        return $e->getResponse()
+            && $e->getResponse()->getStatusCode() == 401
+            // @todo: actually perform this check.
+            && false;
     }
 
     /**
