@@ -17,6 +17,10 @@ class ClassificationDenormalizer implements DenormalizerInterface
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (!$this->isClassificationString($data)) {
+            return null;
+        }
+
         return Classification::fromString($data);
     }
 
@@ -28,4 +32,15 @@ class ClassificationDenormalizer implements DenormalizerInterface
         return $type == Classification::class;
     }
 
+    /**
+     * Checks if the string represents a classification (e.g. "***").
+     *
+     * @param string $classificationString
+     * @return bool
+     */
+    protected function isClassificationString(string $classificationString): bool
+    {
+        $stars = trim($classificationString);
+        return $stars == str_repeat('*', strlen($stars));
+    }
 }
