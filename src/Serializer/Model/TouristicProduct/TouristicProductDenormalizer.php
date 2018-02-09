@@ -14,6 +14,7 @@ use Nascom\ToerismeWerktApiClient\Model\Aggregates\Image;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Location;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\OpeningHours;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Prices;
+use Nascom\ToerismeWerktApiClient\Model\AttractionCategory;
 use Nascom\ToerismeWerktApiClient\Model\Facility\Facility;
 use Nascom\ToerismeWerktApiClient\Model\Region;
 use Nascom\ToerismeWerktApiClient\Model\Tag;
@@ -56,6 +57,7 @@ class TouristicProductDenormalizer implements
             'foreignLanguageDescriptions' => ForeignLanguageDescription::class . '[]',
             'images' => Image::class . '[]',
             'facilities' => Facility::class . '[]',
+            'attractionCategories' => AttractionCategory::class . '[]',
             'openingHours' => OpeningHours::class . '[]',
             'closingPeriods' => ClosingPeriod::class . '[]',
             'holidaysOpeningHours' => HolidayOpeningHours::class . '[]'

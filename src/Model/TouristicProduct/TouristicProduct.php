@@ -14,6 +14,7 @@ use Nascom\ToerismeWerktApiClient\Model\Aggregates\Image;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Location;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\OpeningHours;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Prices;
+use Nascom\ToerismeWerktApiClient\Model\AttractionCategory;
 use Nascom\ToerismeWerktApiClient\Model\Facility\Facility;
 use Nascom\ToerismeWerktApiClient\Model\Region;
 use Nascom\ToerismeWerktApiClient\Model\Tag;
@@ -211,6 +212,11 @@ class TouristicProduct
      * @var string|null
      */
     private $emailAddress;
+
+    /**
+     * @var AttractionCategory[]
+     */
+    private $attractionCategories = [];
 
     /**
      * TouristicProduct constructor.
@@ -795,5 +801,19 @@ class TouristicProduct
     public function setHolidayOpeningHours(array $holidayOpeningHours): void
     {
         $this->holidayOpeningHours = $holidayOpeningHours;
+    }
+
+    /**
+     * @return AttractionCategory[]
+     */
+    public function getAttractionCategories(): array {
+      return $this->attractionCategories;
+    }
+
+    /**
+     * @param AttractionCategory[] $attractionCategories
+     */
+    public function setAttractionCategories(array $attractionCategories) {
+      $this->attractionCategories = $attractionCategories;
     }
 }

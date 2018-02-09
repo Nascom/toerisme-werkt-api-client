@@ -3,6 +3,7 @@
 namespace Nascom\ToerismeWerktApiClient\Request\AttractionCategories;
 
 use Nascom\ToerismeWerktApiClient\Request\GetRequest;
+use Nascom\ToerismeWerktApiClient\Response\AttractionCategories\ListAttractionCategoriesResponse;
 
 /**
  * Class ListAttractionCategoriesRequest
@@ -17,5 +18,13 @@ class ListAttractionCategoriesRequest extends GetRequest
     public function getEndpoint(): string
     {
         return 'attractioncategories';
+    }
+
+    /**
+     * @return string
+     */
+    public function getResponseClass(): string
+    {
+      return ListAttractionCategoriesResponse::class;
     }
 }

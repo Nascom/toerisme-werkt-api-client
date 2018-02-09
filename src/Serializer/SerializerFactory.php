@@ -6,12 +6,14 @@ use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\CapacityStatistics
 use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\ClassificationDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\HolidayOpeningHoursDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\OpeningHoursDenormalizer;
+use Nascom\ToerismeWerktApiClient\Serializer\Model\AttractionCategoryDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\Facility\FacilityCategoryDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\Facility\FacilityDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\RegionDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\TagDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct\TouristicProductDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct\TouristicProductListViewDenormalizer;
+use Nascom\ToerismeWerktApiClient\Serializer\Response\AttractionCategories\ListAttractionCategoriesResponseDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Response\ErrorResponseDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Response\Regions\ListRegionsResponseDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Response\Tags\ListTagsResponseDenormalizer;
@@ -48,6 +50,7 @@ class SerializerFactory
             new ListFacilitiesResponseDenormalizer(),
             new ListTagsResponseDenormalizer(),
             new ListRegionsResponseDenormalizer(),
+            new ListAttractionCategoriesResponseDenormalizer(),
 
             // Models.
             new TouristicProductDenormalizer(),
@@ -60,6 +63,7 @@ class SerializerFactory
             new CapacityStatisticsDenormalizer(),
             new RegionDenormalizer(),
             new HolidayOpeningHoursDenormalizer(),
+            new AttractionCategoryDenormalizer(),
 
 
             // Symfony normalizers to handle the rest.
