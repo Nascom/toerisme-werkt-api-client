@@ -34,6 +34,11 @@ class Image
      */
     private $large;
 
+  /**
+   * @var string|null
+   */
+    private $extraLarge;
+
     /**
      * @var bool
      */
@@ -122,6 +127,22 @@ class Image
     public function setLarge(?string $large): void
     {
         $this->large = $large;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getExtraLarge(): ?string
+    {
+        return $this->extraLarge;
+    }
+
+    /**
+     * @param null|string $extraLarge
+     */
+    public function setExtraLarge(?string $extraLarge): void
+    {
+        $this->extraLarge = $extraLarge;
     }
 
     /**
