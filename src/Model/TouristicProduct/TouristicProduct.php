@@ -159,12 +159,12 @@ class TouristicProduct
     private $distanceToPublicTransport;
 
     /**
-     * @var int|null
+     * @var string|null
      */
     private $betweenNodes1;
 
     /**
-     * @var int|null
+     * @var string|null
      */
     private $betweenNodes2;
 
@@ -580,33 +580,33 @@ class TouristicProduct
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getBetweenNodes1(): ?int
+    public function getBetweenNodes1(): ?string
     {
         return $this->betweenNodes1;
     }
 
     /**
-     * @param int|null $betweenNodes1
+     * @param string|null $betweenNodes1
      */
-    public function setBetweenNodes1(?int $betweenNodes1): void
+    public function setBetweenNodes1(?string $betweenNodes1): void
     {
         $this->betweenNodes1 = $betweenNodes1;
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getBetweenNodes2(): ?int
+    public function getBetweenNodes2(): ?string
     {
         return $this->betweenNodes2;
     }
 
     /**
-     * @param int|null $betweenNodes2
+     * @param string|null $betweenNodes2
      */
-    public function setBetweenNodes2(?int $betweenNodes2): void
+    public function setBetweenNodes2(?string $betweenNodes2): void
     {
         $this->betweenNodes2 = $betweenNodes2;
     }
