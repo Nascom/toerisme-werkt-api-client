@@ -3,6 +3,7 @@
 namespace Nascom\ToerismeWerktApiClient\Serializer\Model\TouristicProduct;
 
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Address;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\CapacityPrices;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\CapacityStatistics;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Chain;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\CheckInTime;
@@ -48,6 +49,7 @@ class TouristicProductDenormalizer implements
             'location' => Location::class,
             'prices' => Prices::class,
             'region' => Region::class,
+            'capacityPrices' => CapacityPrices::class,
             'capacityStatistics' => CapacityStatistics::class,
             'chain' => Chain::class,
             'lastModified' => \DateTime::class,

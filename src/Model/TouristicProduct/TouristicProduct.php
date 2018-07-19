@@ -3,6 +3,7 @@
 namespace Nascom\ToerismeWerktApiClient\Model\TouristicProduct;
 
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Address;
+use Nascom\ToerismeWerktApiClient\Model\Aggregates\CapacityPrices;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\CapacityStatistics;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Chain;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\CheckInTime;
@@ -107,6 +108,11 @@ class TouristicProduct
      * @var CapacityStatistics
      */
     private $capacityStatistics;
+
+  /**
+   * @var CapacityPrices
+   */
+    private $capacityPrices;
 
     /**
      * @var string|null
@@ -225,6 +231,7 @@ class TouristicProduct
     {
         // Initialize default aggregates.
         $this->prices = new Prices();
+        $this->capacityPrices = new CapacityPrices();
     }
 
     /**
@@ -806,14 +813,32 @@ class TouristicProduct
     /**
      * @return AttractionCategory[]
      */
-    public function getAttractionCategories(): array {
-      return $this->attractionCategories;
+    public function getAttractionCategories(): array
+    {
+        return $this->attractionCategories;
     }
 
     /**
      * @param AttractionCategory[] $attractionCategories
      */
-    public function setAttractionCategories(array $attractionCategories) {
-      $this->attractionCategories = $attractionCategories;
+    public function setAttractionCategories(array $attractionCategories)
+    {
+        $this->attractionCategories = $attractionCategories;
+    }
+
+    /**
+     * @return CapacityPrices
+     */
+    public function getCapacityPrices(): CapacityPrices
+    {
+        return $this->capacityPrices;
+    }
+
+    /**
+     * @param CapacityPrices $capacityPrices
+     */
+    public function setCapacityPrices(CapacityPrices $capacityPrices): void
+    {
+        $this->capacityPrices = $capacityPrices;
     }
 }
