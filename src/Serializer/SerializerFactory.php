@@ -3,7 +3,6 @@
 namespace Nascom\ToerismeWerktApiClient\Serializer;
 
 use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\CapacityStatisticsDenormalizer;
-use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\ClassificationDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\HolidayOpeningHoursDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\Aggregates\OpeningHoursDenormalizer;
 use Nascom\ToerismeWerktApiClient\Serializer\Model\AttractionCategoryDenormalizer;
@@ -55,7 +54,6 @@ class SerializerFactory
             // Models.
             new TouristicProductDenormalizer(),
             new TouristicProductListViewDenormalizer(),
-            new ClassificationDenormalizer(),
             new FacilityDenormalizer(),
             new FacilityCategoryDenormalizer(),
             new OpeningHoursDenormalizer(),

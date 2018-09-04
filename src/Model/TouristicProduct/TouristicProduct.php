@@ -7,7 +7,6 @@ use Nascom\ToerismeWerktApiClient\Model\Aggregates\CapacityPrices;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\CapacityStatistics;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\Chain;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\CheckInTime;
-use Nascom\ToerismeWerktApiClient\Model\Aggregates\Classification;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\ClosingPeriod;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\ForeignLanguageDescription;
 use Nascom\ToerismeWerktApiClient\Model\Aggregates\HolidayOpeningHours;
@@ -126,7 +125,7 @@ class TouristicProduct
     private $chain;
 
     /**
-     * @var Classification|null
+     * @var string|null
      */
     private $comfortClassification;
 
@@ -465,17 +464,17 @@ class TouristicProduct
     }
 
     /**
-     * @return Classification|null
+     * @return string|null
      */
-    public function getComfortClassification(): ?Classification
+    public function getComfortClassification(): ?string
     {
         return $this->comfortClassification;
     }
 
     /**
-     * @param Classification|null $comfortClassification
+     * @param string|null $comfortClassification
      */
-    public function setComfortClassification(?Classification $comfortClassification): void
+    public function setComfortClassification(?string $comfortClassification): void
     {
         $this->comfortClassification = $comfortClassification;
     }

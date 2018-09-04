@@ -54,7 +54,6 @@ class TouristicProductDenormalizer implements
             'capacityStatistics' => CapacityStatistics::class,
             'chain' => Chain::class,
             'lastModified' => \DateTime::class,
-            'comfortclassificatie' => Classification::class,
             'tags' => Tag::class . '[]',
             'checkinTimes' => CheckInTime::class . '[]',
             'foreignLanguageDescriptions' => ForeignLanguageDescription::class . '[]',
