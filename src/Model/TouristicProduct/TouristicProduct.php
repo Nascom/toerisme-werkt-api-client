@@ -230,6 +230,11 @@ class TouristicProduct
     private $socialMediaLinks = [];
 
     /**
+     * @var string|null
+     */
+    private $subType;
+
+    /**
      * TouristicProduct constructor.
      */
     public function __construct()
@@ -861,5 +866,21 @@ class TouristicProduct
     public function setSocialMediaLinks(array $socialMediaLinks): void
     {
         $this->socialMediaLinks = $socialMediaLinks;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getSubType(): ?string
+    {
+        return $this->subType;
+    }
+
+    /**
+     * @param null|string $subType
+     */
+    public function setSubType(?string $subType): void
+    {
+        $this->subType = $subType;
     }
 }
