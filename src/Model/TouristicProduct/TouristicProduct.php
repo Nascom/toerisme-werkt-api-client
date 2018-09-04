@@ -240,6 +240,11 @@ class TouristicProduct
     private $attractionTicketsButtonDescription;
 
     /**
+     * @var string|null
+     */
+    private $subType;
+
+    /**
      * TouristicProduct constructor.
      */
     public function __construct()
@@ -905,4 +910,19 @@ class TouristicProduct
         $this->attractionTicketsButtonDescription = $description;
     }
 
+    /**
+     * @return null|string
+     */
+    public function getSubType(): ?string
+    {
+        return $this->subType;
+    }
+
+    /**
+     * @param null|string $subType
+     */
+    public function setSubType(?string $subType): void
+    {
+        $this->subType = $subType;
+    }
 }
