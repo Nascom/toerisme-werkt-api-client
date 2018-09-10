@@ -109,9 +109,9 @@ class TouristicProduct
      */
     private $capacityStatistics;
 
-  /**
-   * @var CapacityPrices
-   */
+    /**
+     * @var CapacityPrices
+     */
     private $capacityPrices;
 
     /**
@@ -232,7 +232,12 @@ class TouristicProduct
     /**
      * @var string|null
      */
-    private $subType;
+    private $attractionTicketsButtonLink;
+
+    /**
+     * @var string|null
+     */
+    private $attractionTicketsButtonDescription;
 
     /**
      * TouristicProduct constructor.
@@ -871,16 +876,33 @@ class TouristicProduct
     /**
      * @return null|string
      */
-    public function getSubType(): ?string
+    public function getAttractionTicketsButtonLink(): ?string
     {
-        return $this->subType;
+        return $this->attractionTicketsButtonLink;
     }
 
     /**
-     * @param null|string $subType
+     * @param null|string $link
      */
-    public function setSubType(?string $subType): void
+    public function setAttractionTicketsButtonLink(?string $link): void
     {
-        $this->subType = $subType;
+        $this->attractionTicketsButtonLink = $link;
     }
+
+    /**
+     * @return null|string
+     */
+    public function getAttractionTicketsButtonDescription(): ?string
+    {
+        return $this->attractionTicketsButtonDescription;
+    }
+
+    /**
+     * @param null|string $description
+     */
+    public function setAttractionTicketsButtonDescription(?string $description): void
+    {
+        $this->attractionTicketsButtonDescription = $description;
+    }
+
 }
