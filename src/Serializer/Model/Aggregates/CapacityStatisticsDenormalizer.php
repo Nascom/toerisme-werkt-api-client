@@ -23,8 +23,8 @@ class CapacityStatisticsDenormalizer implements DenormalizerInterface
                 ? (int) $data[$key]
                 : NULL;
         };
-        $capacityStatistics->setTotalCapacity($intOrNull('totaalCapaciteit'));
-        $capacityStatistics->setTotalNumberOfUnits($intOrNull('totaalAantalEenheden'));
+        $capacityStatistics->setTotalCapacity($intOrNull('maximumCapacity'));
+        $capacityStatistics->setTotalNumberOfUnits($intOrNull('numberOfUnits'));
 
         return $capacityStatistics;
     }
