@@ -433,7 +433,7 @@ class TouristicProduct
     /**
      * @return CapacityStatistics
      */
-    public function getCapacityStatistics(): CapacityStatistics
+    public function getCapacityStatistics(): ?CapacityStatistics
     {
         return $this->capacityStatistics;
     }
