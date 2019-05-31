@@ -227,7 +227,7 @@ class TouristicProduct
     /**
      * @var SocialMediaLink[]
      */
-    private $socialMediaLinks = [];
+    private $socialMedias = [];
 
     /**
      * @var string|null
@@ -867,7 +867,7 @@ class TouristicProduct
      */
     public function getSocialMediaLinks(): array
     {
-        return $this->socialMediaLinks;
+        return $this->socialMedias;
     }
 
     /**
@@ -875,7 +875,18 @@ class TouristicProduct
      */
     public function setSocialMediaLinks(array $socialMediaLinks): void
     {
-        $this->socialMediaLinks = $socialMediaLinks;
+        $this->socialMedias = $socialMediaLinks;
+    }
+
+    /**
+     * The property has been renamed in the API, so we need this alias to
+     * correctly set it.
+     *
+     * @param SocialMediaLink[] $socialMediaLinks
+     */
+    public function setSocialMedias(array $socialMediaLinks): void
+    {
+        $this->setSocialMediaLinks($socialMediaLinks);
     }
 
     /**

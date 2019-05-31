@@ -60,7 +60,7 @@ class TouristicProductDenormalizer implements
             'openingHours' => OpeningHours::class . '[]',
             'closingPeriods' => ClosingPeriod::class . '[]',
             'holidaysOpeningHours' => HolidayOpeningHours::class . '[]',
-            'socialMediaLinks' => SocialMediaLink::class . '[]'
+            'socialMedias' => SocialMediaLink::class . '[]'
         ];
         $attributes = $this->mapDataProperties($data['attributes'], $mapping);
         unset($data['attributes']);
