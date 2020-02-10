@@ -100,7 +100,7 @@ class TouristicProduct
     private $prices;
 
     /**
-     * @var Region
+     * @var Region|null
      */
     private $region;
 
@@ -415,9 +415,9 @@ class TouristicProduct
     }
 
     /**
-     * @return Region
+     * @return Region|null
      */
-    public function getRegion(): Region
+    public function getRegion(): ?Region
     {
         return $this->region;
     }
