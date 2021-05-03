@@ -31,6 +31,7 @@ class NameConverter implements NameConverterInterface
         'startDatum' => 'startDate',
         'eindDatum' => 'endDate',
         'opmerking' => 'remarks',
+        'openingHoursRemark' => 'openingHoursRemarks',
 
         // Foreign language description
         'label_title' => 'labelTitle',

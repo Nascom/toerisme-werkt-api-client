@@ -52,6 +52,16 @@ class TouristicProduct
     /**
      * @var string
      */
+    private $openingHoursRemarks = '';
+
+    /**
+     * @var string
+     */
+    private $openingHoursType = '';
+
+    /**
+     * @var string
+     */
     private $type;
 
     /**
@@ -796,6 +806,26 @@ class TouristicProduct
     public function setOpeningHours(array $openingHours): void
     {
         $this->openingHours = $openingHours;
+    }
+
+    public function getOpeningHoursRemarks(): string
+    {
+        return $this->openingHoursRemarks;
+    }
+
+    public function setOpeningHoursRemarks(string $openingHoursRemarks): void
+    {
+        $this->openingHoursRemarks = $openingHoursRemarks;
+    }
+
+    public function getOpeningHoursType(): string
+    {
+        return $this->openingHoursType;
+    }
+
+    public function setOpeningHoursType(string $openingHoursType): void
+    {
+        $this->openingHoursType = $openingHoursType;
     }
 
     /**
